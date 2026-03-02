@@ -490,6 +490,64 @@
       "total_refunded": "Refunderet"
     }
   },
+  "about_page": {
+    "intro": "Ved fjorden forener vi brygning og destillation i et hus, hvor ro, omhu og godt håndværk styrer processen.",
+    "history": {
+      "heading": "Historien",
+      "paragraph_1": "Fjord Bryggeri og Destilleri blev skabt med en enkel ambition: at lave drikkevarer med klar smag, lokale spor og respekt for klassiske metoder.",
+      "paragraph_2": "Fra de første små batches har vi arbejdet i et roligt tempo, hvor hver opskrift finjusteres, til den føles rigtig i glasset.",
+      "paragraph_3": "I dag laver vi både øl, gin, snaps og rom. Fællesnævneren er den samme: ordentlige råvarer, håndværk og stolthed i hver eneste tappede flaske."
+    },
+    "team": {
+      "heading": "Holdet",
+      "intro": "Vi er et lille team med hver vores faglighed, men med samme målsætning: at skabe drikkevarer med karakter og balance.",
+      "member_1": {
+        "name": "Mads Fjord",
+        "role": "Brygmester",
+        "bio": "Mads arbejder med malt, gær og tid. Han holder fokus på klarhed, dybde og et rent udtryk i hver øl."
+      },
+      "member_2": {
+        "name": "Anne Vester",
+        "role": "Destillatør",
+        "bio": "Anne udvikler vores gin, snaps og rom med blik for aroma, struktur og præcision i hver destillation."
+      },
+      "member_3": {
+        "name": "Søren Birk",
+        "role": "Gæste- og butikschef",
+        "bio": "Søren byder gæster velkommen i butikken og guider med jordnær viden om smag, servering og match."
+      }
+    },
+    "find_us": {
+      "heading": "Find os",
+      "opening_hours_heading": "Åbningstider",
+      "map_heading": "Interaktivt kort",
+      "map_title": "Kort over Fjord Bryggeri og Destilleri",
+      "map_link": "Åbn kort i nyt vindue",
+      "hours": {
+        "monday": "Mandag",
+        "monday_value": "Lukket",
+        "tuesday": "Tirsdag",
+        "tuesday_value": "11:00 - 17:00",
+        "wednesday": "Onsdag",
+        "wednesday_value": "11:00 - 17:00",
+        "thursday": "Torsdag",
+        "thursday_value": "11:00 - 17:00",
+        "friday": "Fredag",
+        "friday_value": "11:00 - 18:00",
+        "saturday": "Lørdag",
+        "saturday_value": "10:00 - 15:00",
+        "sunday": "Søndag",
+        "sunday_value": "Lukket"
+      }
+    },
+    "contact": {
+      "heading": "Kontakt",
+      "intro": "Har du spørgsmål til produkter, smagninger eller besøg i bryggeriet, er du altid velkommen til at kontakte os.",
+      "address_label": "Adresse",
+      "phone_label": "Telefon",
+      "email_label": "E-mail"
+    }
+  },
   "gift_cards": {
     "issued": {
       "title": "Her er din gavekortsaldo ({{ value }}) for {{ shop }}!",

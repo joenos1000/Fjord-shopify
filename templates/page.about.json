@@ -1,0 +1,26 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-about",
+      "settings": {
+        "contact_address": "Fjord Bryggeri og Destilleri\nHavnevej 18\n7900 Nykobing Mors",
+        "contact_phone": "+45 88 77 66 55",
+        "contact_email": "kontakt@fjord-bryggeri.dk",
+        "map_embed_url": "https://www.openstreetmap.org/export/embed.html?bbox=8.7555%2C56.7460%2C8.9730%2C56.8600&layer=mapnik&marker=56.8030%2C8.8650",
+        "map_link": "https://www.openstreetmap.org/?mlat=56.8030&mlon=8.8650#map=13/56.8030/8.8650"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

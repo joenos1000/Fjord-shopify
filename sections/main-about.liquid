@@ -1,0 +1,156 @@
+{{ 'section-about-page.css' | asset_url | stylesheet_tag }}
+
+<section class="about-page" aria-labelledby="AboutPageTitle">
+  <div class="about-page__container">
+    <h1 id="AboutPageTitle" class="about-page__title">{{ page.title | escape }}</h1>
+    <p class="about-page__lede">{{ 'about_page.intro' | t }}</p>
+
+    <div class="about-page__section">
+      <h2 class="about-page__heading">{{ 'about_page.history.heading' | t }}</h2>
+      <p class="about-page__text">{{ 'about_page.history.paragraph_1' | t }}</p>
+      <p class="about-page__text">{{ 'about_page.history.paragraph_2' | t }}</p>
+      <p class="about-page__text">{{ 'about_page.history.paragraph_3' | t }}</p>
+    </div>
+
+    <div class="about-page__section">
+      <h2 class="about-page__heading">{{ 'about_page.team.heading' | t }}</h2>
+      <p class="about-page__text">{{ 'about_page.team.intro' | t }}</p>
+      <div class="about-page__team">
+        <article class="about-page__card">
+          <h3 class="about-page__card-title">{{ 'about_page.team.member_1.name' | t }}</h3>
+          <span class="about-page__card-role">{{ 'about_page.team.member_1.role' | t }}</span>
+          <p class="about-page__card-text">{{ 'about_page.team.member_1.bio' | t }}</p>
+        </article>
+        <article class="about-page__card">
+          <h3 class="about-page__card-title">{{ 'about_page.team.member_2.name' | t }}</h3>
+          <span class="about-page__card-role">{{ 'about_page.team.member_2.role' | t }}</span>
+          <p class="about-page__card-text">{{ 'about_page.team.member_2.bio' | t }}</p>
+        </article>
+        <article class="about-page__card">
+          <h3 class="about-page__card-title">{{ 'about_page.team.member_3.name' | t }}</h3>
+          <span class="about-page__card-role">{{ 'about_page.team.member_3.role' | t }}</span>
+          <p class="about-page__card-text">{{ 'about_page.team.member_3.bio' | t }}</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="about-page__section">
+      <h2 class="about-page__heading">{{ 'about_page.find_us.heading' | t }}</h2>
+      <div class="about-page__find-us">
+        <article class="about-page__panel">
+          <h3 class="about-page__subheading">{{ 'about_page.find_us.opening_hours_heading' | t }}</h3>
+          <dl class="about-page__hours">
+            <div class="about-page__hours-row">
+              <dt>{{ 'about_page.find_us.hours.monday' | t }}</dt>
+              <dd>{{ 'about_page.find_us.hours.monday_value' | t }}</dd>
+            </div>
+            <div class="about-page__hours-row">
+              <dt>{{ 'about_page.find_us.hours.tuesday' | t }}</dt>
+              <dd>{{ 'about_page.find_us.hours.tuesday_value' | t }}</dd>
+            </div>
+            <div class="about-page__hours-row">
+              <dt>{{ 'about_page.find_us.hours.wednesday' | t }}</dt>
+              <dd>{{ 'about_page.find_us.hours.wednesday_value' | t }}</dd>
+            </div>
+            <div class="about-page__hours-row">
+              <dt>{{ 'about_page.find_us.hours.thursday' | t }}</dt>
+              <dd>{{ 'about_page.find_us.hours.thursday_value' | t }}</dd>
+            </div>
+            <div class="about-page__hours-row">
+              <dt>{{ 'about_page.find_us.hours.friday' | t }}</dt>
+              <dd>{{ 'about_page.find_us.hours.friday_value' | t }}</dd>
+            </div>
+            <div class="about-page__hours-row">
+              <dt>{{ 'about_page.find_us.hours.saturday' | t }}</dt>
+              <dd>{{ 'about_page.find_us.hours.saturday_value' | t }}</dd>
+            </div>
+            <div class="about-page__hours-row">
+              <dt>{{ 'about_page.find_us.hours.sunday' | t }}</dt>
+              <dd>{{ 'about_page.find_us.hours.sunday_value' | t }}</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="about-page__panel">
+          <h3 class="about-page__subheading">{{ 'about_page.find_us.map_heading' | t }}</h3>
+          {%- if section.settings.map_embed_url != blank -%}
+            <iframe
+              class="about-page__map"
+              title="{{ 'about_page.find_us.map_title' | t }}"
+              src="{{ section.settings.map_embed_url }}"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          {%- endif -%}
+          {%- if section.settings.map_link != blank -%}
+            <a class="about-page__map-link" href="{{ section.settings.map_link }}" target="_blank" rel="noopener noreferrer">
+              {{ 'about_page.find_us.map_link' | t }}
+            </a>
+          {%- endif -%}
+        </article>
+      </div>
+    </div>
+
+    <div class="about-page__section">
+      <h2 class="about-page__heading">{{ 'about_page.contact.heading' | t }}</h2>
+      <p class="about-page__text">{{ 'about_page.contact.intro' | t }}</p>
+      <div class="about-page__contact-grid">
+        <article class="about-page__contact-item">
+          <strong>{{ 'about_page.contact.address_label' | t }}</strong>
+          <p>{{ section.settings.contact_address }}</p>
+        </article>
+        <article class="about-page__contact-item">
+          <strong>{{ 'about_page.contact.phone_label' | t }}</strong>
+          <a class="about-page__contact-link" href="tel:{{ section.settings.contact_phone | strip | replace: ' ', '' }}">
+            {{ section.settings.contact_phone }}
+          </a>
+        </article>
+        <article class="about-page__contact-item">
+          <strong>{{ 'about_page.contact.email_label' | t }}</strong>
+          <a class="about-page__contact-link" href="mailto:{{ section.settings.contact_email }}">
+            {{ section.settings.contact_email }}
+          </a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main about",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "contact_address",
+      "label": "Contact address",
+      "default": "Fjord Bryggeri og Destilleri\nHavnevej 18\n7900 Nykobing Mors"
+    },
+    {
+      "type": "text",
+      "id": "contact_phone",
+      "label": "Contact phone",
+      "default": "+45 88 77 66 55"
+    },
+    {
+      "type": "text",
+      "id": "contact_email",
+      "label": "Contact email",
+      "default": "kontakt@fjord-bryggeri.dk"
+    },
+    {
+      "type": "text",
+      "id": "map_embed_url",
+      "label": "Map embed URL",
+      "default": "https://www.openstreetmap.org/export/embed.html?bbox=8.7555%2C56.7460%2C8.9730%2C56.8600&layer=mapnik&marker=56.8030%2C8.8650"
+    },
+    {
+      "type": "url",
+      "id": "map_link",
+      "label": "Map link"
+    }
+  ]
+}
+{% endschema %}

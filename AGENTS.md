@@ -42,6 +42,7 @@ templates/       — Page templates (.json or .liquid)
 - All section settings must have a matching `settings_schema.json` entry or inline schema
 - Use `{{ 'file.css' | asset_url | stylesheet_tag }}` — never hardcode URLs
 - Metafields are preferred over hacking product descriptions for structured data (tasting notes, ABV, ingredients)
+- Use Context7 with official Shopify Liquid docs when implementing or validating Liquid syntax, filters, and objects
 
 ## Design System
 

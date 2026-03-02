@@ -1,0 +1,162 @@
+.about-page {
+  background: #fff9e4;
+  color: #212121;
+}
+
+.about-page__container {
+  margin: 0 auto;
+  max-width: 72rem;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.about-page__title {
+  color: #3c2313;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+
+.about-page__lede {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin: 0 0 2.5rem;
+  max-width: 46rem;
+}
+
+.about-page__section {
+  border-top: 1px solid rgba(60, 35, 19, 0.18);
+  padding-top: 2rem;
+}
+
+.about-page__section + .about-page__section {
+  margin-top: 2.5rem;
+}
+
+.about-page__heading {
+  color: #3c2313;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+.about-page__text {
+  line-height: 1.7;
+  margin: 0 0 1rem;
+  max-width: 46rem;
+}
+
+.about-page__subheading {
+  color: #3c2313;
+  font-size: 1.15rem;
+  margin: 0 0 0.9rem;
+}
+
+.about-page__team {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  margin-top: 1.25rem;
+}
+
+.about-page__card {
+  background: #ffffff;
+  border: 1px solid rgba(60, 35, 19, 0.14);
+  border-radius: 0.75rem;
+  padding: 1.1rem;
+}
+
+.about-page__card-title {
+  color: #3c2313;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.about-page__card-role {
+  color: #a78952;
+  display: block;
+  font-size: 0.9rem;
+  margin: 0.3rem 0 0.7rem;
+}
+
+.about-page__card-text {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.about-page__find-us {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  margin-top: 1.25rem;
+}
+
+.about-page__panel {
+  background: #ffffff;
+  border: 1px solid rgba(60, 35, 19, 0.14);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.about-page__hours {
+  margin: 0;
+}
+
+.about-page__hours-row {
+  border-bottom: 1px solid rgba(60, 35, 19, 0.12);
+  display: flex;
+  font-size: 0.98rem;
+  justify-content: space-between;
+  padding: 0.48rem 0;
+}
+
+.about-page__hours-row:last-child {
+  border-bottom: 0;
+}
+
+.about-page__map {
+  aspect-ratio: 4 / 3;
+  border: 0;
+  border-radius: 0.6rem;
+  display: block;
+  width: 100%;
+}
+
+.about-page__map-link {
+  color: #3c2313;
+  display: inline-block;
+  font-weight: 600;
+  margin-top: 0.7rem;
+  text-underline-offset: 0.2rem;
+}
+
+.about-page__contact-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin-top: 1.2rem;
+}
+
+.about-page__contact-item strong {
+  color: #3c2313;
+  display: block;
+  margin-bottom: 0.28rem;
+}
+
+.about-page__contact-link {
+  color: #212121;
+  text-decoration-color: rgba(60, 35, 19, 0.6);
+  text-underline-offset: 0.2rem;
+}
+
+.about-page__contact-link:hover {
+  color: #3c2313;
+}
+
+@media screen and (max-width: 749px) {
+  .about-page__container {
+    padding: 2.2rem 1.1rem 3rem;
+  }
+}

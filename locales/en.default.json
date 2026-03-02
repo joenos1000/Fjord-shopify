@@ -491,6 +491,64 @@
       "submit": "Reset password"
     }
   },
+  "about_page": {
+    "intro": "By the fjord, we unite brewing and distilling in one house where calm, care, and craftsmanship guide every step.",
+    "history": {
+      "heading": "Our story",
+      "paragraph_1": "Fjord Bryggeri og Destilleri was founded with a simple ambition: to create drinks with clear flavor, local roots, and respect for classic methods.",
+      "paragraph_2": "From our first small batches, we have worked at a steady pace, refining each recipe until it feels right in the glass.",
+      "paragraph_3": "Today we produce beer, gin, snaps, and rum. The common thread is the same: honest ingredients, skilled craft, and pride in every bottle."
+    },
+    "team": {
+      "heading": "The team",
+      "intro": "We are a small team with different disciplines, but one shared goal: to create drinks with character and balance.",
+      "member_1": {
+        "name": "Mads Fjord",
+        "role": "Master Brewer",
+        "bio": "Mads works with malt, yeast, and time. His focus is clarity, depth, and a clean expression in every beer."
+      },
+      "member_2": {
+        "name": "Anne Vester",
+        "role": "Distiller",
+        "bio": "Anne develops our gin, snaps, and rum with a sharp eye for aroma, structure, and precision in every distillation."
+      },
+      "member_3": {
+        "name": "Soren Birk",
+        "role": "Guest and Store Manager",
+        "bio": "Soren welcomes visitors in the shop and guides them with grounded advice on flavor, serving, and pairing."
+      }
+    },
+    "find_us": {
+      "heading": "Find us",
+      "opening_hours_heading": "Opening hours",
+      "map_heading": "Interactive map",
+      "map_title": "Map of Fjord Bryggeri og Destilleri",
+      "map_link": "Open map in a new window",
+      "hours": {
+        "monday": "Monday",
+        "monday_value": "Closed",
+        "tuesday": "Tuesday",
+        "tuesday_value": "11:00 - 17:00",
+        "wednesday": "Wednesday",
+        "wednesday_value": "11:00 - 17:00",
+        "thursday": "Thursday",
+        "thursday_value": "11:00 - 17:00",
+        "friday": "Friday",
+        "friday_value": "11:00 - 18:00",
+        "saturday": "Saturday",
+        "saturday_value": "10:00 - 15:00",
+        "sunday": "Sunday",
+        "sunday_value": "Closed"
+      }
+    },
+    "contact": {
+      "heading": "Contact",
+      "intro": "If you have questions about products, tastings, or visiting the brewery, you are always welcome to reach out.",
+      "address_label": "Address",
+      "phone_label": "Phone",
+      "email_label": "Email"
+    }
+  },
   "gift_cards": {
     "issued": {
       "how_to_use_gift_card": "Use the gift card code online or QR code in-store",
