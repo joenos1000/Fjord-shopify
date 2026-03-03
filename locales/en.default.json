@@ -580,5 +580,14 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "header": {
+    "menu": "Menu",
+    "close_menu": "Close menu"
+  },
+  "hero": {
+    "previous_slide": "Previous slide",
+    "next_slide": "Next slide",
+    "go_to_slide": "Go to slide"
   }
 }

@@ -579,5 +579,14 @@
       "expanded": "Formularen til modtager af gavekort er vist",
       "collapsed": "Formularen til modtager af gavekort er skjult"
     }
+  },
+  "header": {
+    "menu": "Menu",
+    "close_menu": "Luk menu"
+  },
+  "hero": {
+    "previous_slide": "Forrige slide",
+    "next_slide": "Næste slide",
+    "go_to_slide": "Gå til slide"
   }
 }

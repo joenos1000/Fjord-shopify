@@ -3,7 +3,7 @@
 ## 1. Dokumentformål
 Dette dokument definerer den overordnede designretning for Fjord Bryggeri og Destilleri webshoppen på Shopify. Fokus er på brandidentitet, visuel stil, tone, UX-principper og designkrav.
 
-Dette dokument inkluderer **ikke** en sideoversigt eller side-specifikke layouts. Sidestruktur og sidebehov håndteres separat.
+V1 af dette dokument inkluderer designretningen samt konkrete specifikationer for global header og hjemmesidens hero-sektion. Øvrige sider og indholdsmoduler håndteres i næste fase.
 
 ## 2. Produkt- og forretningskontekst
 
@@ -25,6 +25,14 @@ Danske kunder, der værdsætter:
 - Håndværksmæssig kvalitet
 - Troværdighed, tradition og autenticitet
 
+### 2.4 Oplevelser og aktiviteter
+Ud over produktsalg tilbyder Fjord Bryggeri og Destilleri fysiske oplevelser, som også skal fremgå af webshoppen:
+- **Rundvisning:** Guidede ture på bryggeriet og destilleriet
+- **Fredagsbar / Fredagsfurter:** Tilbagevendende fredagsarrangement på stedet — bar, mad og atmosfære
+
+### 2.5 Stedet og bygningen
+Fjord Bryggeri og Destilleri holder til i en historisk bygning, som er en vigtig del af brandets karakter og autenticitet. Bygningens visuelle identitet skal bruges aktivt som en del af storytelling på sitet — særligt i hero- og om-sektioner.
+
 ## 3. Brandfundament
 
 ### 3.1 Brandpersonlighed
@@ -37,7 +45,10 @@ Brandet skal opleves som:
 
 Tonalt billede: en erfaren brygmester, passioneret om faget, uden at være prætentiøs.
 
-### 3.2 Brandløfte (designmæssigt)
+### 3.2 Stedets karakter
+Den historiske bygning er en central del af brandets DNA. Den skal formidles visuelt og tekstmæssigt som et levende, autentisk sted — ikke bare en produktion, men et håndværksmiljø med sjæl og fortid. Dette særligt i hero-sektioner og "Om"-siden.
+
+### 3.3 Brandløfte (designmæssigt)
 Webshoppen skal formidle, at produkterne er produceret med faglig stolthed og respekt for dansk bryg- og destillationstradition, i en moderne nordisk ramme.
 
 ## 4. Designmål
@@ -71,7 +82,17 @@ Retningslinjer:
 - Store, tydelige overskrifter i hero- og nøglesektioner
 - Brødtekst skal være rolig, letlæselig og diskret
 - Hold typografisk hierarki enkelt og konsekvent
-- Fontfiler ligger i projektets `Fonts`-mappe
+
+Fontfiler (ligger i `assets/` — Shopify-deployable):
+| Fil | Brug |
+|-----|------|
+| `Headline_Gothic_ATF.otf` | Primær display-font (overskrifter, hero) |
+| `Headline_Gothic_ATF_Round.otf` | Alternativ blød variant af display-font |
+| `MinionPro-Regular.otf` | Brødtekst, standard vægt |
+| `MinionPro-Medium.otf` / `MinionPro-Semibold.otf` | Brødtekst, mellemvægt |
+| `MinionPro-Bold.otf` | Brødtekst, fed |
+| `MinionPro-It.otf` / `MinionPro-BoldIt.otf` | Kursiv varianter |
+| `Axia_Regular.otf` | Alternativ sans-serif (UI, navigation) |
 
 ### 5.3 Billedstil og art direction
 - Produktbilleder skal føles ærlige, taktile og premium
@@ -130,12 +151,83 @@ Core design PRD anses som opfyldt når:
 3. Designretningen kan anvendes konsistent på tværs af alle kommende sider.
 4. UX er rolig, læsbar og uden de fravalgte elementer.
 
-## 13. Afgrænsning
-Dette dokument dækker kun den overordnede designretning og brandmæssige UX-krav.
+## 13. V1 Scope: Hjemmesiden — Hero og Global Header
 
-**Ikke inkluderet:**
-- Endelig sideoversigt
-- Side-specifik wireframing
+V1 af dette PRD udvider scope til at inkludere konkrete designspecifikationer for hjemmesidens hero-sektion og global header. Dette er de første komponenter der bygges.
+
+---
+
+### 13.1 Global Header
+
+**Layout:**
+- Logo: Fjord Bryggeri og Destilleri logo, centreret i toppen af headeren
+- Navigation venstre: `Øl` · `Spiritus` · `Om` · `Rundvisning` · `Fredagsbar`
+- Navigation højre: `Kurv`
+
+**Visuel tilstand:**
+- **På hero:** Transparent med subtilt mørkt overlay. Tekst i Ivory Mist / hvid.
+- **Ved scroll:** Solid Dark Coffee (`#3C2313`). Tekst forbliver lys.
+- Transition: Kort fade ved scroll-skift (ca. 200ms)
+
+**Typografi og stil:**
+- Navigationslinks: Helvetica, caps eller small caps, diskret skalering
+- Aktiv/hover tilstand: Subtil underline eller farveaccent i Camel (`#A78952`)
+- Ingen mega-menu i V1 — flat links
+
+**Kvalitetskrav:**
+- Fuldt responsiv — mobile version bruger hamburger-menu
+- Mobilmenu: Slide-in panel, mørk baggrund, tydelig lukning
+
+---
+
+### 13.2 Hero Sektion
+
+**Type:** Fullbleed carousel med 5 slides
+
+**Visuel reference:** Copenhagen Distillery hero-stil — mørkt, filmisk, produkt- og miljønært. Store, fede overskrifter over mørkt billede med overlay.
+
+**Generelt per slide:**
+- Baggrund: Fullbleed foto med mørkt halvgennemsigtigt overlay (ca. 40–55% opacity) for tekstlæsbarhed
+- Eyebrow text: Lille, versaler, Helvetica — slide-specifik tagline
+- Headline: ATF Headline Gothic, meget stor (desktop: 80–120px), hvid, venstrejusteret eller centreret
+- CTA: Én primær knap per slide — diskret outline eller solid i Camel/Ivory
+- Billeder: Placeholder i V1; alle slides specificeres som mørke, atmosfæriske fotos
+
+**Slides (rækkefølge og indhold):**
+
+Placeholder-billeder ligger i `placeholder-images/placeholder-images-hero/`.
+
+| # | Slide | Placeholder-billede | Eyebrow | Headline (placeholder) | CTA |
+|---|-------|---------------------|---------|----------------------|-----|
+| 1 | Øl | `øl-hero.jpg` | "Brygget ved fjorden" | [Produktnavn / øl-kategori] | "Se vores øl" |
+| 2 | Spiritus | `spiritus-hero.jpg` | "Håndlavet på Mors" | [Produktnavn — f.eks. Fjord Blik] | "Se vores spiritus" |
+| 3 | Om & Bygningen | `bygning-hero.jpg` | "Vores historie" | [Bygning / oprindelse] | "Læs mere" |
+| 4 | Rundvisning | `rundvisning-hero.jpeg` | "Oplev bryggeriet" | "Book en rundvisning" | "Book nu" |
+| 5 | Fredagsbar | `fredagsbar-hero.jpg` | "Hver fredag" | "Fredagsbar & Fredagsfurter" | "Se hvornår" |
+
+**Carousel mekanik:**
+- Navigation: Pile venstre/højre, diskret og let synlige (som Cph Distillery reference)
+- Slide-indikatorer: Subtile streger eller punkter i bunden, Camel/hvid
+- Auto-play: Anbefalet 6 sekunder per slide, pause ved hover eller touch
+- Transition: Kort fade eller slide (max 500ms) — ingen tunge animationer
+- Minimum hero-højde: 100vh på desktop, 70–80vh på mobil
+
+**Indholdsplacering:**
+- Tekst: Vertikal midtplacering eller let under midten (ikke hårdt i toppen)
+- Horisontal: Venstrejusteret med padding, eller centreret — konsistent på tværs af slides
+
+---
+
+### 13.3 Afgrænsning (V1)
+
+Denne version af PRD dækker:
+- Overordnet designretning og brandmæssige UX-krav (sektionerne 1–12)
+- Global header-specifikation
+- Hjemmesidens hero-sektion
+
+**Ikke inkluderet i V1:**
+- Øvrige sektioner på hjemmesiden (under hero)
+- Side-specifik wireframing for øvrige sider
 - Detaljerede indholdsmoduler per side
 
 Disse besluttes i næste fase på baggrund af dette Core Design PRD.

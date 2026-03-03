@@ -1,12 +1,14 @@
 # Fjord Bryggeri og Destilleri — Shopify Theme
 
+You are actively building and editing this Shopify theme. Your job is to write and modify Liquid, CSS, and JS files directly — not just describe or suggest changes.
+
 A custom Shopify theme for Fjord Bryggeri og Destilleri, a Danish brewery and distillery producing beer, gin, snaps, rum and more. The brand identity is **clean Nordic minimalism with bold, intentional accents** — reflecting tradition and premium craftsmanship.
 
 ## Project Overview
 
 - **Brand:** Fjord Bryggeri og Destilleri (Danish brewery & distillery)
 - **Products:** Craft beer, beer, gin, snaps, rum and more — emphasis on tradition processes and high-quality ingredients
-- **Base:** Dawn theme (structure/plumbing only — UI is fully replaced)
+- **Base:** Dawn theme — used **only** for Shopify technical compatibility (file structure, schema conventions, CLI tooling). Every Dawn UI component is being replaced. Do not inherit, extend, or restyle Dawn's visual layer.
 - **Stack:** Tailwind CSS, Alpine.js, Shopify Liquid, npm
 
 ## Architecture
@@ -44,6 +46,40 @@ templates/       — Page templates (.json or .liquid)
 - Metafields are preferred over hacking product descriptions for structured data (tasting notes, ABV, ingredients)
 - Use Context7 with official Shopify Liquid docs when implementing or validating Liquid syntax, filters, and objects
 
+### Theme Editor Editability — Required for Every Section
+
+Every section must be **fully editable in the Shopify theme editor**. This is not optional. Follow these rules without exception:
+
+- **Every visible text string must be a schema setting** — headings, subheadings, body copy, button labels, captions. No hardcoded text in the HTML.
+- Use the correct setting type for each field:
+  - Short text (headlines, labels): `"type": "text"`
+  - Multi-line body copy: `"type": "textarea"`
+  - Rich text (formatted paragraphs): `"type": "richtext"`
+  - Images: `"type": "image_picker"`
+  - Links/URLs: `"type": "url"`
+  - Colours: `"type": "color"`
+  - True/false toggles: `"type": "checkbox"`
+- Always provide a sensible `"default"` value for every setting so the section looks correct out of the box
+- Group related settings with `"type": "header"` dividers in the schema for clarity in the editor
+- Every section schema must include a `"name"` (shown in the editor sidebar) and `"presets"` so it can be added from the editor
+- Output settings in Liquid with `{{ section.settings.my_setting }}` — never skip the schema and hardcode the value
+
+Example pattern for a hero section heading:
+```liquid
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Velkommen til Fjord" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "" },
+    { "type": "url", "id": "cta_url", "label": "Button link" },
+    { "type": "text", "id": "cta_label", "label": "Button text", "default": "Se produkter" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}
+```
+
 ## Design System
 
 ### Principles
@@ -52,9 +88,26 @@ templates/       — Page templates (.json or .liquid)
 - Never use more than 2 typefaces
 - Imagery is always full-bleed or tightly cropped — no floating images with white gaps
 
+### Fonts
+
+All font files are in `assets/` and must be referenced via `{{ 'filename.otf' | asset_url }}` in Liquid.
+
+| File | Role | Tailwind token |
+|------|------|----------------|
+| `Headline_Gothic_ATF.otf` | Display / headings (hero, section titles) | `font-display` |
+| `Headline_Gothic_ATF_Round.otf` | Soft display variant | — |
+| `MinionPro-Regular.otf` | Body text | `font-body` |
+| `MinionPro-Medium.otf` | Body medium weight | — |
+| `MinionPro-Semibold.otf` | Body semibold | — |
+| `MinionPro-Bold.otf` | Body bold | — |
+| `MinionPro-It.otf` / `MinionPro-BoldIt.otf` | Italic variants | — |
+| `Axia_Regular.otf` | UI / navigation sans-serif | `font-ui` |
+
+Load fonts in `layout/theme.liquid` using `@font-face` in a `<style>` block or a dedicated `assets/fonts.css`. Never use Google Fonts or external font CDNs.
+
 ### Tokens (define in `tailwind.config.js`)
-- Define brand colors as named tokens: `fjord-navy`, `fjord-cream`, `fjord-copper`, etc.
-- Define font families: `font-display` (headings), `font-body` (body text)
+- Define brand colors as named tokens: `fjord-camel`, `fjord-coffee`, `fjord-ivory`, `fjord-carbon`
+- Define font families: `font-display` (Headline Gothic), `font-body` (MinionPro), `font-ui` (Axia)
 - Use `rem` units for spacing — never `px` in Tailwind config
 
 ### Components to build (not inherit from Dawn)
@@ -86,12 +139,13 @@ npm run build:css        # Compile Tailwind (watch mode: npm run watch:css)
 
 ## Dawn Inheritance Rules
 
-Dawn is used **for structure only**. Follow these rules:
+Dawn is the **technical scaffold only** — it makes the theme Shopify-compatible. The entire UI is being built from scratch on top of it. Do not treat Dawn as a design starting point.
 
-- **Keep:** `config/`, `locales/` base structure, template JSON scaffolding, section schema patterns
+- **Keep:** `config/`, `locales/` base structure, template JSON scaffolding, section schema patterns — these ensure Shopify CLI and theme tooling work correctly
 - **Replace:** All section HTML/CSS, `layout/theme.liquid` shell, any Dawn-specific JS (`theme.js`, etc.)
+- **Do not:** Reuse, reference, or partially restyle any Dawn visual components. Dawn's look and feel is irrelevant — this is a new theme.
 - **Do not:** Add Dawn's CSS classes, rely on Dawn's JS modules, or reference `base.css`
-- If a Dawn section is not being replaced yet, leave it untouched — do not partially restyle it
+- If a Dawn section has not been replaced yet, leave it untouched — never partially restyle it
 
 ## Code Style
 

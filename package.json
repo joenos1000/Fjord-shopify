@@ -1,0 +1,12 @@
+{
+  "name": "fjord-shopify-theme",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/theme.css -o ./assets/theme.css --minify",
+    "watch:css": "tailwindcss -i ./src/theme.css -o ./assets/theme.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary {
+    @apply inline-block px-8 py-3 bg-fjord-camel text-white font-ui uppercase tracking-wider text-sm transition-colors duration-200 hover:bg-fjord-coffee;
+  }
+
+  .btn-outline {
+    @apply inline-block px-8 py-3 border border-fjord-ivory/80 text-fjord-ivory font-ui uppercase tracking-wider text-sm transition-colors duration-200 hover:bg-fjord-camel hover:border-fjord-camel;
+  }
+}

@@ -9,76 +9,64 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero_carousel": {
+      "type": "hero-carousel",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "slide_ol": {
+          "type": "slide",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "eyebrow": "Brygget ved fjorden",
+            "heading": "Fjord Øl",
+            "cta_label": "Se vores øl"
           }
         },
-        "button": {
-          "type": "buttons",
+        "slide_spiritus": {
+          "type": "slide",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "eyebrow": "Håndlavet på Mors",
+            "heading": "Fjord Spiritus",
+            "cta_label": "Se vores spiritus"
+          }
+        },
+        "slide_om": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Vores historie",
+            "heading": "Fjord Bryggeri & Destilleri",
+            "cta_label": "Læs mere"
+          }
+        },
+        "slide_rundvisning": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Oplev bryggeriet",
+            "heading": "Book en rundvisning",
+            "cta_label": "Book nu"
+          }
+        },
+        "slide_fredagsbar": {
+          "type": "slide",
+          "settings": {
+            "eyebrow": "Hver fredag",
+            "heading": "Fredagsbar & Fredagsfurter",
+            "cta_label": "Se hvornår"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "slide_ol",
+        "slide_spiritus",
+        "slide_om",
+        "slide_rundvisning",
+        "slide_fredagsbar"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "autoplay": true,
+        "autoplay_speed": 6
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero_carousel"
   ]
 }

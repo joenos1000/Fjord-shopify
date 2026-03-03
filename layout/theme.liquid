@@ -274,6 +274,100 @@
       >
     {%- endif -%}
 
+    {%- comment -%} Fjord custom fonts {%- endcomment -%}
+    <style>
+      @font-face {
+        font-family: 'Headline Gothic ATF';
+        src: url('{{ "Headline_Gothic_ATF.otf" | asset_url }}') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Headline Gothic ATF Round';
+        src: url('{{ "Headline_Gothic_ATF_Round.otf" | asset_url }}') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'MinionPro';
+        src: url('{{ "MinionPro-Regular.otf" | asset_url }}') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'MinionPro';
+        src: url('{{ "MinionPro-Medium.otf" | asset_url }}') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'MinionPro';
+        src: url('{{ "MinionPro-Semibold.otf" | asset_url }}') format('opentype');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'MinionPro';
+        src: url('{{ "MinionPro-Bold.otf" | asset_url }}') format('opentype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'MinionPro';
+        src: url('{{ "MinionPro-It.otf" | asset_url }}') format('opentype');
+        font-weight: 400;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'MinionPro';
+        src: url('{{ "MinionPro-BoldIt.otf" | asset_url }}') format('opentype');
+        font-weight: 700;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Axia';
+        src: url('{{ "Axia_Regular.otf" | asset_url }}') format('opentype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      [x-cloak] { display: none !important; }
+    </style>
+
+    {%- comment -%} Tailwind CSS — use compiled theme.css in production, CDN for development {%- endcomment -%}
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'fjord-camel': '#A78952',
+              'fjord-coffee': '#3C2313',
+              'fjord-ivory': '#FFF9E4',
+              'fjord-carbon': '#212121',
+            },
+            fontFamily: {
+              'display': ['Headline Gothic ATF', 'sans-serif'],
+              'body': ['MinionPro', 'Georgia', 'serif'],
+              'ui': ['Axia', 'Helvetica', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+
+    {%- comment -%} Alpine.js {%- endcomment -%}
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
     <script>
       document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
       if (Shopify.designMode) {
