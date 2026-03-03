@@ -5,12 +5,159 @@
   - Auto-play with pause on hover/touch
 {%- endcomment -%}
 
-<section
+{%- comment -%} Override Dawn's section styling for full-bleed hero {%- endcomment -%}
+<style>
+  #shopify-section-{{ section.id }}.fjord-hero-carousel {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero {
+    position: relative;
+    width: 100%;
+    height: 70svh;
+    min-height: 42rem;
+    overflow: hidden;
+    isolation: isolate;
+    background: #3C2313;
+  }
+  @supports not (height: 1svh) {
+    #shopify-section-{{ section.id }} .fjord-hero {
+      height: 70vh;
+    }
+  }
+  @media (min-width: 990px) {
+    #shopify-section-{{ section.id }} .fjord-hero {
+      height: 100svh;
+      min-height: 64rem;
+    }
+    @supports not (height: 1svh) {
+      #shopify-section-{{ section.id }} .fjord-hero {
+        height: 100vh;
+      }
+    }
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__slide {
+    position: absolute;
+    inset: 0;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.50);
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__fallback {
+    position: absolute;
+    inset: 0;
+    background: #3C2313;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__content {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    width: min(80rem, 100%);
+    margin: 0 auto;
+    padding: calc(var(--header-height, 0px) + 2.4rem) 1.5rem 5.6rem;
+    display: flex;
+    align-items: flex-end;
+  }
+  @media (min-width: 990px) {
+    #shopify-section-{{ section.id }} .fjord-hero__content {
+      padding: calc(var(--header-height, 0px) + 3.2rem) 3rem 7.2rem;
+    }
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__eyebrow {
+    font-family: 'Axia', Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255, 249, 228, 0.8);
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__heading {
+    font-family: 'Headline Gothic ATF', sans-serif;
+    color: #FFF;
+    line-height: 0.9;
+    margin-bottom: 1.5rem;
+    max-width: 56rem;
+    font-size: clamp(2.5rem, 8vw, 9rem);
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__cta {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border: 1px solid rgba(255, 249, 228, 0.8);
+    color: #FFF9E4;
+    font-family: 'Axia', Helvetica, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__cta:hover {
+    background: #A78952;
+    border-color: #A78952;
+    color: #fff;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    padding: 0.5rem;
+    color: rgba(255, 255, 255, 0.72);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__arrow:hover {
+    color: #FFF;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__arrow--prev {
+    left: 1rem;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__arrow--next {
+    right: 1rem;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__indicators {
+    position: absolute;
+    left: 50%;
+    bottom: 1.5rem;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__indicator {
+    height: 0.25rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.5);
+    width: 0.75rem;
+  }
+  #shopify-section-{{ section.id }} .fjord-hero__indicator.is-active {
+    width: 2rem;
+    background: #A78952;
+  }
+</style>
+
+<div
   x-data="{
     currentSlide: 0,
-    totalSlides: {{ section.blocks.size }},
-    autoplay: {{ section.settings.autoplay }},
-    autoplaySpeed: {{ section.settings.autoplay_speed | times: 1000 }},
+    totalSlides: {{ section.blocks.size | json }},
+    autoplay: {{ section.settings.autoplay | json }},
+    autoplaySpeed: {{ section.settings.autoplay_speed | times: 1000 | json }},
     timer: null,
     init() {
       if (this.autoplay && this.totalSlides > 1) this.startAutoplay();
@@ -23,9 +170,11 @@
       if (this.timer) clearInterval(this.timer);
     },
     next() {
+      if (this.totalSlides < 1) return;
       this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
     },
     prev() {
+      if (this.totalSlides < 1) return;
       this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
     },
     goTo(index) {
@@ -37,7 +186,7 @@
   @mouseleave="if (autoplay && totalSlides > 1) startAutoplay()"
   @touchstart.passive="stopAutoplay()"
   @touchend="if (autoplay && totalSlides > 1) startAutoplay()"
-  class="relative w-full h-[70vh] lg:h-screen overflow-hidden"
+  class="fjord-hero"
 >
   {%- for block in section.blocks -%}
     <div
@@ -49,7 +198,7 @@
       x-transition:leave="transition-opacity ease-in duration-500"
       x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      class="absolute inset-0 flex items-center"
+      class="fjord-hero__slide"
       {{ block.shopify_attributes }}
     >
       {%- comment -%} Background image {%- endcomment -%}
@@ -64,38 +213,40 @@
           "
           sizes="100vw"
           alt="{{ block.settings.heading | escape }}"
-          class="absolute inset-0 w-full h-full object-cover"
+          class="fjord-hero__bg"
           {% if forloop.first %}loading="eager" fetchpriority="high"{% else %}loading="lazy"{% endif %}
         >
       {%- else -%}
-        <div class="absolute inset-0 bg-fjord-coffee"></div>
+        <div class="fjord-hero__fallback"></div>
       {%- endif -%}
 
       {%- comment -%} Dark overlay {%- endcomment -%}
-      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="fjord-hero__overlay"></div>
 
       {%- comment -%} Slide content {%- endcomment -%}
-      <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12">
-        {%- if block.settings.eyebrow != blank -%}
-          <p class="font-ui text-xs sm:text-sm uppercase tracking-[0.2em] text-fjord-ivory/80 mb-4 lg:mb-6">
-            {{ block.settings.eyebrow }}
-          </p>
-        {%- endif -%}
+      <div class="fjord-hero__content">
+        <div>
+          {%- if block.settings.eyebrow != blank -%}
+            <p class="fjord-hero__eyebrow">
+              {{ block.settings.eyebrow }}
+            </p>
+          {%- endif -%}
 
-        {%- if block.settings.heading != blank -%}
-          <h2 class="font-display text-4xl sm:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl text-white leading-[0.9] mb-6 lg:mb-10 max-w-4xl">
-            {{ block.settings.heading }}
-          </h2>
-        {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <h2 class="fjord-hero__heading">
+              {{ block.settings.heading }}
+            </h2>
+          {%- endif -%}
 
-        {%- if block.settings.cta_label != blank -%}
-          <a
-            href="{{ block.settings.cta_url }}"
-            class="btn-outline"
-          >
-            {{ block.settings.cta_label }}
-          </a>
-        {%- endif -%}
+          {%- if block.settings.cta_label != blank -%}
+            <a
+              href="{{ block.settings.cta_url }}"
+              class="fjord-hero__cta"
+            >
+              {{ block.settings.cta_label }}
+            </a>
+          {%- endif -%}
+        </div>
       </div>
     </div>
   {%- endfor -%}
@@ -104,43 +255,43 @@
   {%- if section.blocks.size > 1 -%}
     <button
       @click="prev(); if (autoplay) startAutoplay()"
-      class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
-      aria-label="{{ 'hero.previous_slide' | t }}"
+      class="fjord-hero__arrow fjord-hero__arrow--prev"
+      aria-label="{{ 'general.slider.previous_slide' | t }}"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 lg:h-10 lg:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
 
     <button
       @click="next(); if (autoplay) startAutoplay()"
-      class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 p-2 text-white/50 hover:text-white transition-colors duration-200"
-      aria-label="{{ 'hero.next_slide' | t }}"
+      class="fjord-hero__arrow fjord-hero__arrow--next"
+      aria-label="{{ 'general.slider.next_slide' | t }}"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 lg:h-10 lg:w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1">
         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
       </svg>
     </button>
 
     {%- comment -%} Slide indicators {%- endcomment -%}
-    <div class="absolute bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+    <div class="fjord-hero__indicators">
       {%- for block in section.blocks -%}
         <button
           @click="goTo({{ forloop.index0 }})"
-          :class="currentSlide === {{ forloop.index0 }} ? 'bg-fjord-camel w-8' : 'bg-white/40 w-3 hover:bg-white/60'"
-          class="h-1 rounded-full transition-all duration-300"
-          :aria-label="'{{ 'hero.go_to_slide' | t }}' + ' ' + {{ forloop.index }}"
+          class="fjord-hero__indicator"
+          :class="{ 'is-active': currentSlide === {{ forloop.index0 }} }"
+          aria-label="{{ 'general.slider.name' | t }} {{ forloop.index }}"
           :aria-current="currentSlide === {{ forloop.index0 }} ? 'step' : false"
         ></button>
       {%- endfor -%}
     </div>
   {%- endif -%}
-</section>
+</div>
 
 {% schema %}
 {
   "name": "Hero Carousel",
-  "tag": "section",
+  "tag": "div",
   "class": "fjord-hero-carousel",
   "settings": [
     {

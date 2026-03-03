@@ -252,6 +252,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
@@ -343,27 +344,7 @@
       [x-cloak] { display: none !important; }
     </style>
 
-    {%- comment -%} Tailwind CSS — use compiled theme.css in production, CDN for development {%- endcomment -%}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'fjord-camel': '#A78952',
-              'fjord-coffee': '#3C2313',
-              'fjord-ivory': '#FFF9E4',
-              'fjord-carbon': '#212121',
-            },
-            fontFamily: {
-              'display': ['Headline Gothic ATF', 'sans-serif'],
-              'body': ['MinionPro', 'Georgia', 'serif'],
-              'ui': ['Axia', 'Helvetica', 'sans-serif'],
-            },
-          },
-        },
-      }
-    </script>
+    {%- comment -%} Tailwind CSS is compiled to assets/theme.css {%- endcomment -%}
 
     {%- comment -%} Alpine.js {%- endcomment -%}
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
