@@ -170,6 +170,18 @@
       }
     }
   }
+
+  /* On mobile, when the slideshow is the hero (first section under a transparent header),
+     reserve space for the header so the logo doesn't overlap slide content. */
+  @media screen and (max-width: 749px) {
+    body:has(.header-section .header[transparent])
+      main
+      > .shopify-section:first-child
+      .slideshow-section
+      .slide__content {
+      padding-block: calc(var(--padding-block-start) + var(--header-height)) var(--padding-block-end);
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
