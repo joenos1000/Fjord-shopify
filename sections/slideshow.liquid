@@ -181,6 +181,16 @@
       .slide__content {
       padding-block: calc(var(--padding-block-start) + var(--header-height)) var(--padding-block-end);
     }
+
+    /* Make the hero slideshow fill the mobile viewport, matching the
+       proportions the desktop slideshow has to its viewport. */
+    body:has(.header-section .header[transparent])
+      main
+      > .shopify-section:first-child
+      .slideshow-section
+      slideshow-slides {
+      min-height: 100svh;
+    }
   }
 {% endstylesheet %}
 
